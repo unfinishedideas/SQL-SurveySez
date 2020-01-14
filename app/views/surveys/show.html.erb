@@ -1,3 +1,25 @@
 <h1><%= @survey.name %></h1>
 
-<p></p>
+
+<% if @survey.questions.any? %>
+  <h4>Here are some questions for your survey:</h4>
+
+  <% @survey.questions.each do |question| %>
+    <ul>
+      <li>
+        <%= link_to question.question_title, survey_question_path(@survey, question) %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>This survey has no questions</p>
+<% end %>
+
+<p><%= link_to "Add a question", new_survey_question_path(@survey) %></p>
+
+<p><%= link_to "Edit", edit_survey_path(@survey) %></p>
+<p><%= link_to "Delete survey", survey_path(@survey),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+
+<p><%= link_to "Return to surveys", surveys_path %></p>

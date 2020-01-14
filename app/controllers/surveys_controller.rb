@@ -21,6 +21,7 @@ class SurveysController < ApplicationController
 
   def edit
     @survey = Survey.find(params[:id])
+    @question = Question.find(params[:survey_id])
     render :edit
   end
 
@@ -41,7 +42,7 @@ end
 def destroy
   @survey = Survey.find(params[:id])
   @survey.destroy
-  redirect_to albums_path
+  redirect_to surveys_path
 end
 
 
