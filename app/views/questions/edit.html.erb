@@ -1,11 +1,3 @@
 <h1>Edit question</h1>
 
-<%= form_for [@survey, @question] do |f| %>
-<%= f.label :question_text %>
-<%= f.text_field :question_text %>
-<%= f.label :question_title %>
-<%= f.text_field :question_title %>
-<%= f.label :user_response %>
-<%= f.text_field :user_response %>
-<%= f.submit  %>
-<% end %>
+<%= render "layouts/question_form" %>

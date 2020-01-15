@@ -13,15 +13,20 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
+      flash[:notice] = "Survey created!"
       redirect_to surveys_path
     else
+      flash[:alert] = "Survey NOT created! Chungus"
       render :new
     end
   end
 
   def edit
     @survey = Survey.find(params[:id])
-    @question = Question.find(params[:survey_id])
+    # if Question.find(params[:survey_id])
+      # @question = Question.find(params[:survey_id])
+      # render :edit
+    # end
     render :edit
   end
 

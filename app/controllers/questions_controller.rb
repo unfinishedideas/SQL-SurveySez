@@ -27,8 +27,10 @@ class QuestionsController < ApplicationController
     @survey = Survey.find(params[:survey_id])
     @question = @survey.questions.new(question_params)
     if @question.save
+      flash[:notice] = "Question created!"
       redirect_to surveys_path
     else
+      flash[:alert] = "Question NOT created! :("
       render :new
     end
   end
@@ -64,7 +66,7 @@ end
 
   private
   def question_params
-    params.require(:question).permit(:question_title, :question_text, :user_response)
+    params.require(:question).permit(:question_title, :question_text, :user_response, :answer1, :answer2, :answer3, :answer4)
   end
 
 end

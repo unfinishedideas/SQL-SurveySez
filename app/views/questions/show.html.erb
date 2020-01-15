@@ -1,8 +1,18 @@
 <h1><%= @question.question_title %></h1>
 
+<h3>Possible Answers:</h3>
+
+<ul>
+  <li><p><%= @question.answer1 %></p></li>
+  <li><p><%= @question.answer2 %></p></li>
+  <li><p><%= @question.answer3 %></p></li>
+  <li><p><%= @question.answer4 %></p></li>
+</ul>
+
+<hr>
 <p><%= link_to "Edit question", edit_survey_question_path(@survey, @question) %></p>
 <p><%= link_to "Delete", survey_question_path(@survey, @question),
   :data => {:confirm => "You sure?",
   :method => "delete"} %></p>
 
-  <p><%= link_to "Return to survey", survey_path(@survey) %></p>
+<p><%= link_to "Return to survey", survey_path(@survey) %></p>
